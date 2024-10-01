@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        terraform 'Terraform_1.9.6'  // Name from the Global Tool Configuration
+        terraform 'terraform_1.9.6'  // Name from the Global Tool Configuration
     }
     stages {
         stage('Checkout') {
