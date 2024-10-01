@@ -29,12 +29,12 @@ pipeline {
         }
         stage('tf plan'){
           steps{
-            sh 'terraform plan'
+            sh 'terraform plan -out=tfplan'
           }
         }
         stage('run instance'){
           steps{
-            sh 'terraform apply --auto-approve'
+            sh 'terraform apply -auto-approve'
           }
         }
     }
