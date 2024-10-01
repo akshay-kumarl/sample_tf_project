@@ -1,7 +1,12 @@
 pipeline {
     agent any
+
     tools {
         terraform 'terraform_1.9.6'  // Name from the Global Tool Configuration
+    }
+
+     environment {
+        AWS_CREDENTIALS_ID = 'dc1d13ce-5c4b-4b96-971b-f66424ecd16d'   // ID of the AWS credentials stored in Jenkins
     }
     stages {
         stage('Checkout') {
@@ -12,7 +17,6 @@ pipeline {
         }
         stage('install terraform'){
             steps{
-            // sh 'snap install terraform --classic'
              sh 'terraform -v'
             //  sh '''
             //      sudo apt-get install wget -y
@@ -24,20 +28,28 @@ pipeline {
         }
         stage('terraform initialize'){
             steps{
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CREDENTIALS_ID]]){
             sh 'terraform init'
           }
+         }
         }
+
         stage('tf plan'){
           steps{
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CREDENTIALS_ID]]){
             sh 'terraform plan -out=tfplan'
           }
         }
+        }
+
         stage('run instance'){
           steps{
-          //  sh 'terraform apply -auto-approve'
+            withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CREDENTIALS_ID]]){
                echo "Terraform action is --> ${action}"
                 sh ('terraform ${action} --auto-approve') 
+            }
           }
         }
-    }
+   }
 }
+
