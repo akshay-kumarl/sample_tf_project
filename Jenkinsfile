@@ -12,6 +12,9 @@ pipeline {
         stage(terraform initialize){
             sh 'terraform init'
         }
+        stage(tf plan){
+            sh 'terraform plan'
+        }
         stage(run instance){
             sh 'terraform apply --auto-approve'
         }
