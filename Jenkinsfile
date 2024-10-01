@@ -11,10 +11,11 @@ pipeline {
             steps{
             // sh 'snap install terraform --classic'
             // sh 'terraform -v'
-              //    wget https://releases.hashicorp.com/terraform/1.9.6/terraform_1.9.6_linux_amd64.zip
-              //    unzip terraform_1.9.6_linux_amd64.zip
-              //    sudo mv terraform /usr/local/bin/
-                echo 'tf installed in jenkins via plugin'
+              sh '''
+                  wget https://releases.hashicorp.com/terraform/1.9.6/terraform_1.9.6_linux_amd64.zip
+                  unzip terraform_1.9.6_linux_amd64.zip
+                  sudo mv terraform /usr/local/bin/
+                '''
           }
         }
         stage('terraform initialize'){
