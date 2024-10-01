@@ -9,7 +9,7 @@ pipeline {
         }
         stage('install terraform'){
             steps{
-            sh 'sudo snap install terraform --classic'
+            sh 'snap install terraform --classic'
             sh 'terraform -v'
           }
         }
