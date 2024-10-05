@@ -1,6 +1,6 @@
-.github/
-└── workflows/
+.github/ <br/>
+└── workflows/ <br/>
     └── my-workflow.yml
 
 
-file need to save here in order to run github actions
+file needs to save here to run GitHub actions
