@@ -1,4 +1,4 @@
-name: Terraform Workflow
+name: Terraform Infra Creation
 
 
 # Trigger the workflow on push or pull requests to the main branch
