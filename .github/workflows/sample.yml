@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      aws-region: 'us-east-1'
+      aws-region: us-east-1
       # TF_VERSION: '1.4.0'
       # TFLINT_VERSION: '0.46.1'  # Updated to a more recent version
       # TFSEC_VERSION: '1.28.1' 
@@ -48,7 +48,7 @@ jobs:
       env:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        # aws-region: ${{ env.AWS_REGION }}  # Specify your AWS region
+        aws-region: ${{ env.aws-region }}  # Specify your AWS region
 
     # Initialize Terraform (Download modules, plugins, etc.)
     - name: Terraform Init
