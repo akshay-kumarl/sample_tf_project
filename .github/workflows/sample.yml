@@ -41,6 +41,13 @@ jobs:
     #   uses: hashicorp/setup-terraform@v2
     #   with:
     #     terraform_version: 1.9.0  # Specify the version of Terraform to use
+
+
+    - name: Run command in specific directory
+      run: |
+          ls -la
+          echo "Running commands in the target directory"
+      working-directory: infra/terraform/
   
     # Configure AWS Credentials (if you're deploying on AWS)
     - name: Configure AWS credentials
