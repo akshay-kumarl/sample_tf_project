@@ -61,10 +61,12 @@ jobs:
     # Initialize Terraform (Download modules, plugins, etc.)
     - name: Terraform Init
       run: terraform init
+      working-directory: infra/terraform/
 
     # Run Terraform Plan to see changes
     - name: Terraform Plan
       run: terraform plan
+      working-directory: infra/terraform/
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
